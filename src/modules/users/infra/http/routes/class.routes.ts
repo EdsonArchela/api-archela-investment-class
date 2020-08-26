@@ -29,6 +29,6 @@ classRouter.get(
   classController.index,
 );
 
-classRouter.delete('/unsubscribe/:id', classController.unsubscribe);
+classRouter.patch('/unsubscribe/:id', classController.unsubscribe);
 
 export default classRouter;
