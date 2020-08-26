@@ -1,5 +1,5 @@
 export default interface IInvestmentsDTO {
-  popupanca: boolean;
+  poupanca: boolean;
   rendaFixa: boolean;
   fundInvest: boolean;
   fundImob: boolean;

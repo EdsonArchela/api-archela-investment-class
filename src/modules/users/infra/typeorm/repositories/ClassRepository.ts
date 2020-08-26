@@ -9,6 +9,9 @@ export default class ClassRepository implements IClassRepository {
   constructor() {
     this.ormRepository = getRepository(Class);
   }
+  update(_class: Class): Promise<Class> {
+    throw new Error('Method not implemented.');
+  }
 
   public async create({
     name,
@@ -16,7 +19,7 @@ export default class ClassRepository implements IClassRepository {
     phone,
     patrimony,
     investments,
-  }: IClassDTO): Promise<void> {
+  }: IClassDTO): Promise<Class> {
     const _class = this.ormRepository.create({
       name,
       email,
@@ -24,13 +27,23 @@ export default class ClassRepository implements IClassRepository {
       patrimony,
       phone,
     });
-    await this.ormRepository.save(_class);
+    return await this.ormRepository.save(_class);
+  }
+
+  public async unsubscribe(_class: Class): Promise<Class> {
+    return await this.ormRepository.save({ ..._class, email: 'unsubscribed' });
   }
 
   public async findByEmail(email: string): Promise<Class | undefined> {
     const _class = await this.ormRepository.findOne({ where: { email } });
     return _class;
   }
+
+  public async findById(id: string): Promise<Class | undefined> {
+    const _class = await this.ormRepository.findOne(id);
+    return _class;
+  }
+
   public async findAll(): Promise<Class[]> {
     const classes = await this.ormRepository.find();
     return classes;
