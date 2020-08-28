@@ -33,5 +33,5 @@ app.use((err: Error, request: Request, response: Response, _: NextFunction) => {
 });
 
 app.listen(3334, () => {
-  console.log('⚓Server started on port 3333!');
+  console.log('⚓ Archela Class API server running on port 3333!');
 });

@@ -11,7 +11,7 @@ classRouter.post(
     [Segments.BODY]: {
       name: Joi.string().required(),
       email: Joi.string().email().required(),
-      phone: Joi.string().max(11).min(10).required(),
+      phone: Joi.string().max(14).min(14).required(),
       investments: Joi.string().required(),
       patrimony: Joi.number().required(),
     },
